@@ -1,1 +1,1 @@
-# myfinance
+# Boilerplate para projetos utilizando Vite + React + Tailwind + Shadcn
