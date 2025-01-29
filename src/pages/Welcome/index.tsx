@@ -1,5 +1,6 @@
-import * as Icons from "@/components/icons/index";
 import { Button } from "@/components/ui/button";
+import { NavLink } from "react-router";
+import Logo from "@/assets/Logo";
 
 type Props = {};
 
@@ -9,11 +10,11 @@ export default function index({}: Props) {
       <div className="flex flex-col items-center space-y-6">
         <h1 className="font-bold text-3xl text-center">
           Bem vindo ao{" "}
-          <span className="text-primary flex gap-2 items-center">
-            MyFinance <Icons.ChartNoAxesCombined />
-          </span>
+          <Logo/>
         </h1>
-        <Button size={'sm'}>Acessar dashboard</Button>
+        <NavLink to="/dashboard">
+          <Button size={"sm"}>Acessar dashboard</Button>
+        </NavLink>
       </div>
     </div>
   );
