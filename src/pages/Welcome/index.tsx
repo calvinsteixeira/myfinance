@@ -2,9 +2,7 @@ import { Button } from "@/components/ui/button";
 import { NavLink } from "react-router";
 import Logo from "@/assets/Logo";
 
-type Props = {};
-
-export default function index({}: Props) {
+export default function index() {
   return (
     <div className="w-screen h-screen flex justify-center items-center px-10 bg-gradient-to-b from-background to-primary/5 via-background">
       <div className="flex flex-col items-center space-y-6">

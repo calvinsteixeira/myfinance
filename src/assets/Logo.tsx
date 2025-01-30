@@ -1,5 +1,5 @@
 import * as Icons from "@/components/icons/index";
-import { cva, type VariantProps } from "class-variance-authority"
+import { cva } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 type Props = {
@@ -39,7 +39,7 @@ const iconSizeMap = {
 
 export default function Logo({ className, size = 'default' }: Props) {
   return (
-    <span 
+    <span
     className={cn(logoVariants({ size, className }))}>
       MyFinance <Icons.ChartNoAxesCombined className={cn(iconSizeMap[size])}/>
     </span>
