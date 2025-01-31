@@ -1,5 +1,6 @@
-import { ChartNoAxesCombined } from 'lucide-react'
+import { ChartNoAxesCombined, PlusCircle } from 'lucide-react'
 
 export {
-  ChartNoAxesCombined
+  ChartNoAxesCombined,
+  PlusCircle
 }

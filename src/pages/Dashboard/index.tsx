@@ -2,6 +2,7 @@ import Logo from "@/assets/Logo";
 import SpendCard from "./components/SpendCard";
 import { DashboardProvider } from "./context";
 import { Button } from "@/components/ui/button";
+import * as Icons from "@/components/icons/index";
 
 export default function PageComponent() {
   return (
@@ -15,8 +16,11 @@ export default function PageComponent() {
           Acessar transações
         </Button>
       </div>
-      <div className="mt-10">
+      <div className="flex mt-10 items-center">
         <h2>Últimas de transações</h2>
+        <Button aria-label="adicionar nova transação" variant={"link"}>
+          <Icons.PlusCircle className="text-primary" />
+        </Button>
       </div>
     </div>
   );
