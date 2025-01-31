@@ -17,8 +17,8 @@ export default function PageComponent() {
         </Button>
       </div>
       <div className="flex mt-10 items-center">
-        <h2>Últimas de transações</h2>
-        <Button aria-label="adicionar nova transação" variant={"link"}>
+        <h2>Últimas transações</h2>
+        <Button aria-label="adicionar nova transação" variant={"link"} size={"icon"}>
           <Icons.PlusCircle className="text-primary" />
         </Button>
       </div>
