@@ -39,16 +39,16 @@ export default function SpendCard() {
       <strong id={"spend-card-title"}>GASTOS DO MÊS</strong>
       <div className={"mt-2"}>
         <p
-          aria-label={"total-spend"}
+          aria-label={"total gasto"}
           className={`text-3xl font-bold ${memoizedGoalStatusMessage.messageColor}`}
         >
           R$ {spendCard.total}
         </p>
-        <p aria-label={"month-goal"} className={"text-sm font-medium"}>
+        <p aria-label={"meta mensal"} className={"text-sm font-medium"}>
           META: R$ {spendCard.goal}
         </p>
         <p
-          aria-label={"month-goal-status"}
+          aria-label={"status da meta mensal"}
           className={`text-sm ${memoizedGoalStatusMessage.messageColor}`}
         >
           {memoizedGoalStatusMessage.message}
