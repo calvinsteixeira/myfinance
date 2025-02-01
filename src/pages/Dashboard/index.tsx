@@ -5,9 +5,21 @@ import { DashboardProvider, useDashboard } from "./context";
 import { Button } from "@/components/ui/button";
 import * as Icons from "@/components/icons/index";
 import { DashboardContextData } from "./types";
+import React from "react";
 
 export default function PageComponent() {
   const { transactions } = useDashboard();
+
+  const sortedTransactions = React.useMemo(() => {
+    const data = transactions.slice().sort((a, b) => {
+      const dateA = new Date(a.date.split("/").reverse().join("-")).getTime();
+      const dateB = new Date(b.date.split("/").reverse().join("-")).getTime();
+
+      return dateB - dateA;
+    });
+
+    return data;
+  }, [transactions]);
 
   return (
     <div className="w-screen h-screen p-10">
@@ -28,12 +40,13 @@ export default function PageComponent() {
           </Button>
         </div>
         <div className="space-y-3">
-          {transactions.map((transaction: DashboardContextData["transactions"][number]) => (
+          {sortedTransactions.map((transaction: DashboardContextData["transactions"][number]) => (
             <Transaction
               key={transaction.id}
               id={transaction.id}
               title={transaction.title}
               type={transaction.type}
+              date={transaction.date}
               value={transaction.value}
             />
           ))}

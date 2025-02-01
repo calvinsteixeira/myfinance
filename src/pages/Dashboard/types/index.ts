@@ -8,6 +8,7 @@ interface DashboardContextData {
         id: string;
         title: string;
         type: number;
+        date: string;
         value: number;
     }[];
     setTransactions: React.Dispatch<React.SetStateAction<DashboardContextData["transactions"]>>;

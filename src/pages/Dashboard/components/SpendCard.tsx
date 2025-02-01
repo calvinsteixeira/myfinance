@@ -15,7 +15,7 @@ export default function SpendCard() {
     switch (true) {
       case totalSpend > goal:
         return {
-          message: `R$ ${totalSpend - goal} fora da meta`,
+          message: `R$ ${(totalSpend - goal).toFixed(2)} fora da meta`,
           messageColor: "text-destructive",
           goalStatus: "negative",
         };
@@ -35,7 +35,10 @@ export default function SpendCard() {
   }, [spendCard.goal, spendCard.total]);
 
   return (
-    <div aria-labelledby={"spend-card-title"} className={"bg-zinc-900 px-4 py-6 w-full rounded-md"}>
+    <div
+      aria-labelledby={"spend-card-title"}
+      className={"bg-zinc-900 px-4 py-6 w-full rounded-md flex-wrap"}
+    >
       <strong id={"spend-card-title"}>GASTOS DO MÊS</strong>
       <div className={"mt-2"}>
         <p

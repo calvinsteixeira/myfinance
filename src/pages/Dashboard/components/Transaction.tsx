@@ -26,16 +26,15 @@ export default function Transaction(props: DashboardContextData["transactions"][
 
   return (
     <div className="bg-secondary py-2 px-4 flex items-center justify-between space-x-4 flex-wrap rounded-md">
-      <Icons.Ham
-        size={22}
-        className={`${memoizedTypeSettingsTransaction.itemsColor}`}
-        strokeWidth={1.4}
-      />
       <div>
-        <p className={`${memoizedTypeSettingsTransaction.itemsColor} text-xs font-bold`}>
-          {props.title}
-        </p>
-        <p className={`${memoizedTypeSettingsTransaction.itemsColor} text-xs`}>R$ {props.value}</p>
+        <p className={` text-xs font-bold`}>{props.title}</p>
+        <div className="flex gap-4">
+          <p className={` text-xs`}>R$ {props.value}</p>
+          <div className="flex gap-1 items-center">
+            <Icons.CalendarDays strokeWidth={1.6} size={12} />
+            <p className={` text-xs`}>{props.date}</p>
+          </div>
+        </div>
       </div>
       {memoizedTypeSettingsTransaction.iconType}
     </div>
