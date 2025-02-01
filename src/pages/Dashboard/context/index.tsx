@@ -48,6 +48,20 @@ const DashboardProvider: React.FC<Props> = ({ children }) => {
       date: "18/01/2025",
       value: 133.12,
     },
+    {
+      id: "6",
+      title: "Gastos shopping",
+      type: 1,
+      date: "12/01/2025",
+      value: 240.22,
+    },
+    {
+      id: "7",
+      title: "Venda ps5",
+      type: 2,
+      date: "18/01/2025",
+      value: 2800.0,
+    },
   ]);
 
   return (

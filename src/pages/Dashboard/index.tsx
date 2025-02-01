@@ -10,13 +10,16 @@ import React from "react";
 export default function PageComponent() {
   const { transactions } = useDashboard();
 
-  const sortedTransactions = React.useMemo(() => {
-    const data = transactions.slice().sort((a, b) => {
-      const dateA = new Date(a.date.split("/").reverse().join("-")).getTime();
-      const dateB = new Date(b.date.split("/").reverse().join("-")).getTime();
+  const sanitizedTransactions = React.useMemo(() => {
+    const data = transactions
+      .slice()
+      .sort((a, b) => {
+        const dateA = new Date(a.date.split("/").reverse().join("-")).getTime();
+        const dateB = new Date(b.date.split("/").reverse().join("-")).getTime();
 
-      return dateB - dateA;
-    });
+        return dateB - dateA;
+      })
+      .slice(0, 5);
 
     return data;
   }, [transactions]);
@@ -39,17 +42,19 @@ export default function PageComponent() {
             <Icons.PlusCircle className="text-primary" />
           </Button>
         </div>
-        <div className="space-y-3">
-          {sortedTransactions.map((transaction: DashboardContextData["transactions"][number]) => (
-            <Transaction
-              key={transaction.id}
-              id={transaction.id}
-              title={transaction.title}
-              type={transaction.type}
-              date={transaction.date}
-              value={transaction.value}
-            />
-          ))}
+        <div className="space-y-3 pb-10">
+          {sanitizedTransactions.map(
+            (transaction: DashboardContextData["transactions"][number]) => (
+              <Transaction
+                key={transaction.id}
+                id={transaction.id}
+                title={transaction.title}
+                type={transaction.type}
+                date={transaction.date}
+                value={transaction.value}
+              />
+            )
+          )}
         </div>
       </div>
     </div>
