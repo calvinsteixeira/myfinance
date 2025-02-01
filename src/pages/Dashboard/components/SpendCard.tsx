@@ -15,7 +15,7 @@ export default function SpendCard() {
     switch (true) {
       case totalSpend > goal:
         return {
-          message: `R$ ${(totalSpend - goal).toFixed(2)} fora da meta`,
+          message: `R$ ${(totalSpend - goal).toFixed(2)} acima da meta`,
           messageColor: "text-destructive",
           goalStatus: "negative",
         };
