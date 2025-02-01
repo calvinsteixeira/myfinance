@@ -12,12 +12,28 @@ const DashboardProvider: React.FC<Props> = ({ children }) => {
     total: 758.22,
     goal: 1000.0,
   });
+  const [transactions, setTransactions] = React.useState<DashboardContextData["transactions"]>([
+    {
+      id: "1",
+      title: "Churrasco em casa",
+      type: 1,
+      value: 78.82,
+    },
+    {
+      id: "2",
+      title: "Venda do monitor",
+      type: 2,
+      value: 750.0,
+    },
+  ]);
 
   return (
     <DashboardContext.Provider
       value={{
         spendCard,
         setSpendCard,
+        transactions,
+        setTransactions,
       }}
     >
       {children}
