@@ -1,8 +1,8 @@
 import React from "react";
-import { useDashboard } from "../context";
+import { useTransactions } from "@/context/TransactionsProvider";
 
 export default function SpendCard() {
-  const { spendCard } = useDashboard();
+  const { spendCard } = useTransactions();
 
   const calculateGoalStatusMessage = (
     totalSpend: number,

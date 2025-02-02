@@ -1,8 +1,8 @@
 import React from "react";
 import * as Icons from "@/components/icons/index";
-import { DashboardContextData } from "../types";
+import { TransactionsContextData } from "@/types";
 
-export default function Transaction(props: DashboardContextData["transactions"][number]) {
+export default function Transaction(props: TransactionsContextData["transactions"][number]) {
   const memoizedTypeSettingsTransaction = React.useMemo(() => {
     const sanitizeData = () => {
       const transactionType = props.type == 1 ? "positive" : "negative";

@@ -1,18 +1,20 @@
 import React from "react";
-import { DashboardContextData } from "../types";
+import { TransactionsContextData } from "@/types";
 
 type Props = {
   children: React.ReactNode;
 };
 
-const DashboardContext = React.createContext<DashboardContextData>({} as DashboardContextData);
+const TransactionsContext = React.createContext<TransactionsContextData>(
+  {} as TransactionsContextData
+);
 
-const DashboardProvider: React.FC<Props> = ({ children }) => {
-  const [spendCard, setSpendCard] = React.useState<DashboardContextData["spendCard"]>({
+const TransactionsProvider: React.FC<Props> = ({ children }) => {
+  const [spendCard, setSpendCard] = React.useState<TransactionsContextData["spendCard"]>({
     total: 1458.22,
     goal: 1200.0,
   });
-  const [transactions, setTransactions] = React.useState<DashboardContextData["transactions"]>([
+  const [transactions, setTransactions] = React.useState<TransactionsContextData["transactions"]>([
     {
       id: "1",
       title: "Churrasco em casa",
@@ -65,7 +67,7 @@ const DashboardProvider: React.FC<Props> = ({ children }) => {
   ]);
 
   return (
-    <DashboardContext.Provider
+    <TransactionsContext.Provider
       value={{
         spendCard,
         setSpendCard,
@@ -74,12 +76,12 @@ const DashboardProvider: React.FC<Props> = ({ children }) => {
       }}
     >
       {children}
-    </DashboardContext.Provider>
+    </TransactionsContext.Provider>
   );
 };
 
-function useDashboard(): DashboardContextData {
-  const context = React.useContext(DashboardContext);
+function useTransactions(): TransactionsContextData {
+  const context = React.useContext(TransactionsContext);
 
   if (!context) {
     throw new Error("useDashboard must be used within an DashboardProvider");
@@ -88,4 +90,4 @@ function useDashboard(): DashboardContextData {
   return context;
 }
 
-export { DashboardProvider, useDashboard };
+export { TransactionsProvider, useTransactions };

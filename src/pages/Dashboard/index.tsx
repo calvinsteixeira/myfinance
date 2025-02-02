@@ -1,14 +1,14 @@
 import Logo from "@/assets/Logo";
 import SpendCard from "./components/SpendCard";
 import Transaction from "./components/Transaction";
-import { DashboardProvider, useDashboard } from "./context";
+import { TransactionsProvider, useTransactions } from "@/context/TransactionsProvider";
 import { Button } from "@/components/ui/button";
 import * as Icons from "@/components/icons/index";
-import { DashboardContextData } from "./types";
+import { TransactionsContextData } from "@/types";
 import React from "react";
 
 export default function PageComponent() {
-  const { transactions } = useDashboard();
+  const { transactions } = useTransactions();
 
   const sanitizedTransactions = React.useMemo(() => {
     const data = transactions
@@ -44,7 +44,7 @@ export default function PageComponent() {
         </div>
         <div className="space-y-3 pb-10">
           {sanitizedTransactions.map(
-            (transaction: DashboardContextData["transactions"][number]) => (
+            (transaction: TransactionsContextData["transactions"][number]) => (
               <Transaction
                 key={transaction.id}
                 id={transaction.id}
@@ -63,8 +63,8 @@ export default function PageComponent() {
 
 export const Dashboard: React.FC = () => {
   return (
-    <DashboardProvider>
+    <TransactionsProvider>
       <PageComponent />
-    </DashboardProvider>
+    </TransactionsProvider>
   );
 };

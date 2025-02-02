@@ -1,7 +1,8 @@
 import { Routes, Route } from "react-router";
 import Welcome from "@/pages/Welcome";
 import Dashboard from "@/pages/Dashboard";
-import { DashboardProvider } from "@/pages/Dashboard/context";
+import Transactions from "@/pages/Transactions";
+import { TransactionsProvider } from "@/context/TransactionsProvider";
 
 export const RouterComponent: React.FC = () => {
   return (
@@ -10,9 +11,17 @@ export const RouterComponent: React.FC = () => {
       <Route
         path="/dashboard"
         element={
-          <DashboardProvider>
+          <TransactionsProvider>
             <Dashboard />
-          </DashboardProvider>
+          </TransactionsProvider>
+        }
+      />
+      <Route
+        path="/transactions"
+        element={
+          <TransactionsProvider>
+            <Transactions />
+          </TransactionsProvider>
         }
       />
     </Routes>
