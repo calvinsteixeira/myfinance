@@ -25,7 +25,10 @@ export default function Transaction(props: TransactionsContextData["transactions
   }, [props]);
 
   return (
-    <div className="bg-secondary py-2 px-4 flex items-center justify-between space-x-4 flex-wrap rounded-md">
+    <div
+      key={props.id}
+      className="bg-secondary py-2 px-4 flex items-center justify-between space-x-4 flex-wrap rounded-md"
+    >
       <div>
         <p className={` text-xs font-bold`}>{props.title}</p>
         <div className="flex gap-4">

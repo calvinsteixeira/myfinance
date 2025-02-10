@@ -1,10 +1,11 @@
-import { ChartNoAxesCombined, PlusCircle, Ham, ArrowBigUp, ArrowBigDown, CalendarDays } from 'lucide-react'
-
-export {
+import {
   ChartNoAxesCombined,
   PlusCircle,
   Ham,
   ArrowBigUp,
   ArrowBigDown,
-  CalendarDays
-}
+  CalendarDays,
+  CloudAlert,
+} from "lucide-react";
+
+export { ChartNoAxesCombined, PlusCircle, Ham, ArrowBigUp, ArrowBigDown, CalendarDays, CloudAlert };

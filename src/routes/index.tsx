@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router";
 import Welcome from "@/pages/Welcome";
 import Dashboard from "@/pages/Dashboard";
 import Transactions from "@/pages/Transactions";
-import { TransactionsProvider } from "@/context/TransactionsProvider";
+import { TransactionsProvider } from "@/providers/TransactionsProvider";
 
 export const RouterComponent: React.FC = () => {
   return (

@@ -1,27 +1,32 @@
 import Logo from "@/assets/Logo";
 import SpendCard from "./components/SpendCard";
 import Transaction from "./components/Transaction";
-import { TransactionsProvider, useTransactions } from "@/context/TransactionsProvider";
+import { TransactionsProvider, useTransactions } from "@/providers/TransactionsProvider";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import * as Icons from "@/components/icons/index";
 import { TransactionsContextData } from "@/types";
 import React from "react";
 
 export default function PageComponent() {
-  const { transactions } = useTransactions();
+  const { transactions, transactionsRequestLoading, transactionsRequestError } = useTransactions();
 
   const sanitizedTransactions = React.useMemo(() => {
-    const data = transactions
-      .slice()
-      .sort((a, b) => {
-        const dateA = new Date(a.date.split("/").reverse().join("-")).getTime();
-        const dateB = new Date(b.date.split("/").reverse().join("-")).getTime();
+    if (!transactions) return [];
 
-        return dateB - dateA;
-      })
-      .slice(0, 5);
+    if (transactions) {
+      const data = transactions
+        .slice()
+        .sort((a, b) => {
+          const dateA = new Date(a.date.split("/").reverse().join("-")).getTime();
+          const dateB = new Date(b.date.split("/").reverse().join("-")).getTime();
 
-    return data;
+          return dateB - dateA;
+        })
+        .slice(0, 5);
+
+      return data;
+    }
   }, [transactions]);
 
   return (
@@ -43,17 +48,44 @@ export default function PageComponent() {
           </Button>
         </div>
         <div className="space-y-3 pb-10">
-          {sanitizedTransactions.map(
-            (transaction: TransactionsContextData["transactions"][number]) => (
-              <Transaction
-                key={transaction.id}
-                id={transaction.id}
-                title={transaction.title}
-                type={transaction.type}
-                date={transaction.date}
-                value={transaction.value}
-              />
+          {transactionsRequestLoading && (
+            <div className="space-y-3">
+              <Skeleton className="h-12 w-full" />
+              <Skeleton className="h-12 w-full" />
+              <Skeleton className="h-12 w-full" />
+              <Skeleton className="h-12 w-full" />
+              <Skeleton className="h-12 w-full" />
+            </div>
+          )}
+          {transactionsRequestError && (
+            <div className="h-72 flex flex-col items-center justify-center gap-2 text-foreground/40">
+              <Icons.CloudAlert />
+              <p className="text-sm text-center">
+                Falha ao carregar os dados, tente novamente mais tarde
+              </p>
+            </div>
+          )}
+          {sanitizedTransactions && sanitizedTransactions.length > 0 ? (
+            sanitizedTransactions.map(
+              (transaction: TransactionsContextData["transactions"][number]) => (
+                <Transaction
+                  key={transaction.id}
+                  id={transaction.id}
+                  title={transaction.title}
+                  type={transaction.type}
+                  date={transaction.date}
+                  value={transaction.value}
+                />
+              )
             )
+          ) : (
+            <div className="h-72 flex flex-col items-center justify-center gap-2 text-foreground/40">
+              <Icons.CloudAlert />
+              <p className="text-sm text-center">
+                Você não possui nenhuma transação registrada, adicione transações para começar a ver
+                elas aqui
+              </p>
+            </div>
           )}
         </div>
       </div>

@@ -1,1 +1,10 @@
-{}
+{
+  "transactions": [
+    {
+      "title": "Churrasco em casa",
+      "type": 1,
+      "date": "21/01/2025",
+      "value": 122.44
+    }
+  ]
+}
